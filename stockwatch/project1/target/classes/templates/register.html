@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eef2f5;
+            font-family: Arial, sans-serif;
+        }
+        .main-container {
+            margin-top: 90px;
+        }
+        .registration-card {
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .form-input {
+            height: 48px;
+        }
+        .action-btn {
+            background-color: #0069d9;
+            color: white;
+        }
+        .action-btn:hover {
+            background-color: #004b99;
+        }
+        .icon-wrapper {
+            width: 45px;
+            height: 45px;
+            background-color: #e7e9eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        .alert-message {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container main-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="registration-card">
+                <h3 class="text-center mb-4">Join Us</h3>
+
+                <!-- Error Notification -->
+                <div th:if="${errorMessage}" class="alert alert-danger alert-message" role="alert">
+                    <span th:text="${errorMessage}"></span>
+                </div>
+
+                <form method="post" action="/register">
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label for="user-name" class="form-label">User Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text icon-wrapper"><i class="bi bi-person-circle"></i></span>
+                            <input type="text" id="user-name" class="form-control form-input" name="username" required placeholder="Choose a username">
+                        </div>
+                    </div>
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <label for="user-password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text icon-wrapper"><i class="bi bi-shield-lock"></i></span>
+                            <input type="password" id="user-password" class="form-control form-input" name="password" required placeholder="Create a password">
+                        </div>
+                    </div>
+                    <!-- Register Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn action-btn btn-lg w-100">Sign Up</button>
+                    </div>
+                </form>
+                <p class="text-center mt-3">Already registered? <a href="/login">Log in here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
